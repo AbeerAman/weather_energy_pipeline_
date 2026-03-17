@@ -1,0 +1,4 @@
+*.parquet 
+data/bronze/ 
+data/raw/ 
+data/gold/ 
