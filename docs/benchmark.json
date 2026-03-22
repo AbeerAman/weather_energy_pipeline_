@@ -1,7 +1,7 @@
 {
-  "spark_total_time_s": null,
-  "dask_total_time_s": 1698.4870958328247,
-  "spark_lines_of_code": null,
+  "spark_total_time_s": 589.4,
+  "dask_total_time_s": 1093.370102405548,
+  "spark_lines_of_code": 214,
   "dask_lines_of_code": 115,
   "spark_setup_complexity": "High - JVM, cluster config required",
   "dask_setup_complexity": "Low - pure Python, pip install",
