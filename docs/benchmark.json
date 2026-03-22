@@ -1,0 +1,11 @@
+{
+  "spark_total_time_s": 589.4,
+  "dask_total_time_s": 1093.370102405548,
+  "spark_lines_of_code": 214,
+  "dask_lines_of_code": 115,
+  "spark_setup_complexity": "High - JVM, cluster config required",
+  "dask_setup_complexity": "Low - pure Python, pip install",
+  "spark_fault_tolerance": "Built-in - RDD lineage and checkpointing",
+  "dask_fault_tolerance": "Limited - task graph retry only",
+  "recommendation": "Spark preferred at 10GB+ scale"
+}
