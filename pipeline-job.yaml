@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: weather-energy-pipeline
+  labels:
+    app: weather-energy-pipeline
+spec:
+  backoffLimit: 3
+  template:
+    metadata:
+      labels:
+        app: weather-energy-pipeline
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: pipeline
+          image: weather-energy-pipeline:latest
+          imagePullPolicy: Never
+          resources:
+            requests:
+              memory: "4Gi"
+              cpu: "2"
+            limits:
+              memory: "8Gi"
+              cpu: "4"
+          env:
+            - name: PYTHONUNBUFFERED
+              value: "1"
+          volumeMounts:
+            - name: data-volume
+              mountPath: /app/data
+      volumes:
+        - name: data-volume
+          emptyDir: {}
