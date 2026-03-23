@@ -247,7 +247,7 @@ jupyter>=1.0
 
 ## Academic Integrity
 
-All code is the original work of Group B5. External resources are cited in the technical report. AI tools (ChatGPT, GitHub Copilot) were used for code assistance and are disclosed in the report declaration as required by course policy.
+All code is the original work of Group B5. External resources are cited in the technical report. AI tools (Claude ai, GitHub Copilot) were used for code assistance and are disclosed in the report declaration as required by course policy.
 
 ---
 
