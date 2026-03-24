@@ -1,6 +1,6 @@
 # Weather & Energy Correlation Pipeline
 
-**GIK2Q3 Applied Big Data and Cloud Computing — Group B5**
+**GIK2Q3 Applied Big Data and Cloud Computing_Group B5**
 Dalarna University | March 2026
 
 **Team:** Saba · Renuka · Shahed · Aveen · Abeer
