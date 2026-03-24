@@ -6,7 +6,7 @@ This folder is intentionally empty in the repository. Do not commit raw data fil
 
 ## How to get the data
 
-### 1. SMHI Weather Data (9.19 GB)
+### 1. SMHI Weather Data (9.10 GB)
 
 The weather data is downloaded automatically by running the ingestion notebook.
 
@@ -31,7 +31,7 @@ If you prefer to download manually:
 
 ---
 
-### 2. Energy Market Data (~50 MB)
+### 2. Energy Market Data (12.8 MB)
 
 The energy dataset is synthetic and generated automatically by the pipeline.
 
@@ -46,10 +46,10 @@ No manual download is needed.
 ```
 data/
 ├── raw/
-│   └── smhi/               ← 6,781 CSV files from SMHI API
+│   └── smhi/               ← 6,756 CSV files from SMHI API
 ├── bronze/
 │   ├── weather_raw.parquet ← 0.45 GB, 73M records
-│   └── energy_raw.parquet  ← ~50 MB, 210,340 records
+│   └── energy_raw.parquet  ← 12.8 MB, 210,340 records
 ├── silver_spark/
 │   └── weather_clean/      ← Spark-cleaned Parquet
 ├── silver_dask/
