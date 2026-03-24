@@ -64,8 +64,8 @@ weather_energy_pipeline/
 ### 2. Clone the repository
 
 ```bash
-git clone https://github.com/AbeerAman/weather_energy_pipeline_Project.git
-cd weather_energy_pipeline_Project
+git clone https://github.com/AbeerAman/weather_energy_pipeline_.git
+cd weather_energy_pipeline_
 ```
 
 ### 3. Create a virtual environment and install dependencies
