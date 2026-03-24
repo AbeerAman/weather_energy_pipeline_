@@ -5,6 +5,7 @@ This folder is intentionally empty in the repository. Do not commit raw data fil
 ---
 
 ## How to get the data
+cannot push data in github because it was more than 25 MB. So, zip file is attached for data.
 
 ### 1. SMHI Weather Data (9.10 GB)
 
