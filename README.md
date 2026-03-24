@@ -9,7 +9,7 @@ Dalarna University | March 2026
 
 ## Overview
 
-A scalable big data pipeline that analyses the correlation between weather conditions and electricity spot prices across Sweden's four electricity price zones (SE1–SE4). The pipeline ingests 9.19 GB of SMHI weather observations (73 million records) alongside hourly electricity market data, processes them through a Medallion Architecture (Bronze → Silver → Gold), and produces analytical insights on the weather–energy relationship.
+A scalable big data pipeline that analyses the correlation between weather conditions and electricity spot prices across Sweden's four electricity price zones (SE1–SE4). The pipeline ingests 9.10 GB of SMHI weather observations (73 million records) alongside hourly electricity market data, processes them through a Medallion Architecture (Bronze → Silver → Gold), and produces analytical insights on the weather–energy relationship.
 
 **Key findings:** Strong negative correlation of −0.5962 between temperature and spot price, increasing to −0.6467 with a 24-hour rolling average. Spark completed the full pipeline in 589.4 seconds vs Dask's 1,093.4 seconds (1.85× faster). The pipeline was also successfully deployed to AWS EC2 in Stockholm (eu-north-1) at $0.00 cost using the AWS Free Tier.
 
@@ -110,7 +110,7 @@ The pipeline follows the **Medallion Architecture** pattern:
 
 | Layer | Description | Tool |
 |---|---|---|
-| **Bronze** | Raw ingestion — 6,781 SMHI CSV files → Parquet (0.45 GB, 73M rows) | Pandas + fastparquet |
+| **Bronze** | Raw ingestion — 6,756 SMHI CSV files → Parquet (0.45 GB, 73M rows) | Pandas + fastparquet |
 | **Silver** | Cleaning, validation, timestamp parsing, price-zone enrichment | Spark / Dask |
 | **Gold** | Hourly aggregation, weather–energy join, 24h rolling window | Spark / Dask |
 | **Analysis** | Correlation analysis, seasonal breakdowns, visualisations | Pandas + matplotlib |
@@ -126,8 +126,8 @@ The pipeline is implemented **twice** — once in Apache Spark (`02_spark_proces
 
 - **Source:** [SMHI Open Data API](https://opendata.smhi.se/apidocs/metobs/index.html)
 - **Parameter:** Air temperature (parameter 1), corrected-archive period
-- **Coverage:** 995 weather stations across all of Sweden, January 2019 – December 2024
-- **Volume:** 9.19 GB (6,781 CSV files), 73,355,669 records
+- **Coverage:** 997 weather stations across all of Sweden, January 2019 – December 2024
+- **Volume:** 9.10 GB (6,756 CSV files), 73,329,293 records
 - **License:** Creative Commons CC0 (public domain)
 
 Station latitude is used to assign each measurement to a Swedish electricity price zone:
@@ -143,7 +143,7 @@ Station latitude is used to assign each measurement to a Swedish electricity pri
 
 - **Source:** Synthetic dataset based on published characteristics of the Nord Pool Swedish market
 - **Coverage:** January 2019 – December 2024, hourly, all four price zones
-- **Volume:** ~50 MB, 210,340 records
+- **Volume:** 12.8 MB (CSV), 210,340 records
 - **Disclosure:** Real bulk historical data from Nord Pool requires commercial registration and was not available. The synthetic dataset reproduces seasonal price variation, hour-of-day patterns, and zone-specific offsets consistent with published market data. This is disclosed in full in the technical report.
 
 ---
@@ -169,7 +169,7 @@ The pipeline meets the VG Quality and Operations requirements:
 - **Structured logging** — all stages use Python's `logging` module with named loggers (not `print` statements), producing timestamped execution traces.
 - **Data validation** — null checks, schema enforcement, and value range assertions (−60°C to 45°C) applied at the Bronze layer before any processing.
 - **Basic monitoring** — execution time tracked with `time.time()` for every stage; record counts logged at Bronze, Silver, and Gold layers.
-- **Edge case handling** — malformed SMHI CSV files (~50–80 out of 995 stations) detected and skipped with warning log messages.
+- **Edge case handling** — malformed SMHI CSV files (~50–80 out of 997 stations) detected and skipped with warning log messages.
 
 ---
 
@@ -237,10 +237,10 @@ jupyter notebook notebooks/05_aws_deployment.ipynb
 |---|---|
 | Temperature–price correlation (hourly) | −0.5962 |
 | Temperature–price correlation (24h rolling avg) | −0.6467 |
-| Records processed (weather) | 73,355,669 |
+| Records processed (weather) | 73,329,293 |
 | Records after Silver cleaning | 72,176,442 (98.4% retained) |
 | Final Gold dataset records | 210,316 |
-| Parquet compression ratio | ~14:1 (9.19 GB → 0.45 GB) |
+| Parquet compression ratio | ~14:1 (9.10 GB → 0.45 GB) |
 | AWS EC2 execution time | 1.24 seconds |
 | AWS deployment cost | $0.00 |
 
