@@ -79,6 +79,7 @@ pip install -r requirements.txt
 See [`data/README.md`](data/README.md) for the direct download link and instructions. Place the downloaded files into `data/raw/smhi/` before running any notebooks.
 
 Alternatively, you can run `notebooks/01_ingestion-checkpoint.ipynb` end-to-end to re-download the data directly from the SMHI Open Data API (takes ~90 minutes; rate-limited to 0.3 s per request).
+⚠️ IMPORTANT: Always open Jupyter Lab from inside the `notebooks/` folder — NOT from the project root! This ensures all `../data/` paths work correctly.
 
 ### 5. Run the pipeline
 
